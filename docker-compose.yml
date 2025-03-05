@@ -35,6 +35,8 @@ services:
       - LOGGING_FILE_MAX_SIZE=${LOGGING_FILE_MAX_SIZE}
       - LOGGING_MAX_FILES=${LOGGING_MAX_FILES}
     restart: always
+    depends_on:
+      - orchestrator
     networks:
       - calc-network
     volumes:
