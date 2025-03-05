@@ -1,0 +1,13 @@
+orchestrator:
+  port: 8080
+  time_addition_ms: 1000
+  time_subtraction_ms: 1000
+  time_multiplications_ms: 1000
+  time_divisions_ms: 1000
+
+logging:
+  to_file: true
+  logging_dir: "/app/logs"
+  format: "json"
+  max_size: 20
+  max_files: 2

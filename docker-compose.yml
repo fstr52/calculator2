@@ -1,0 +1,50 @@
+services:
+  orchestrator:
+    build:
+      context: .
+      dockerfile: Dockerfile.orchestrator
+    ports:
+      - "8080:8080"
+    environment:
+      - TIME_ADDITION_MS=${TIME_ADDITION_MS}
+      - TIME_SUBTRACTION_MS=${TIME_SUBTRACTION_MS}
+      - TIME_MULTIPLICATIONS_MS=${TIME_MULTIPLICATIONS_MS}
+      - TIME_DIVISIONS_MS=${TIME_DIVISIONS_MS}
+      - TO_FILE=${TO_FILE}
+      - LOGGING_DIR=${LOGGING_DIR}
+      - LOGGING_FORMAT=${LOGGING_FORMAT}
+      - LOGGING_FILE_MAX_SIZE=${LOGGING_FILE_MAX_SIZE}
+      - LOGGING_MAX_FILES=${LOGGING_MAX_FILES}
+    restart: always
+    networks:
+      - calc-network
+    volumes:
+      - ./configs/:/app/configs/
+      - logs_volume:/app/logs
+    command: sh -c "ls -la / && ls -la /app && mkdir -p /app/logs && chmod -R 777 /app/logs && exec /app/orchestrator"
+  agent:
+    build:
+      context: .
+      dockerfile: Dockerfile.agent
+    environment:
+      - COMPUTING_POWER=${COMPUTING_POWER}
+      - ORCHESTRATOR_URL=http://orchestrator:8080
+      - TO_FILE=${TO_FILE}
+      - LOGGING_DIR=${LOGGING_DIR}
+      - LOGGING_FORMAT=${LOGGING_FORMAT}
+      - LOGGING_FILE_MAX_SIZE=${LOGGING_FILE_MAX_SIZE}
+      - LOGGING_MAX_FILES=${LOGGING_MAX_FILES}
+    restart: always
+    networks:
+      - calc-network
+    volumes:
+      - ./configs/:/app/configs/
+      - logs_volume:/app/logs
+    command: sh -c "ls -la / && ls -la /app && mkdir -p /app/logs && chmod -R 777 /app/logs && exec /app/agent"
+
+networks:
+  calc-network:
+    driver: bridge
+
+volumes:
+  logs_volume:
