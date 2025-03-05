@@ -10,7 +10,7 @@
 
 ## Запуск
 
-1. Установите [Docker]([https://go.dev/doc/install](https://www.docker.com/get-started/))
+1. Установите [Docker](https://www.docker.com/get-started/)
 2. Установите [Git](https://git-scm.com/downloads) (при использовании далее способа с клонированием через git clone)
 3. Склонируйте проект через команду:
     ```console
