@@ -54,7 +54,13 @@ func (o *Orchestrator) CalculateHandler(w http.ResponseWriter, r *http.Request) 
 		logger.Error("Failed to prepare input",
 			"expression", userRequest.Expression,
 			"error", err)
-		panic(fmt.Errorf("operateInput error? %v", err))
+		http.Error(w, "Invalid expression", http.StatusUnprocessableEntity)
+		return
+	}
+
+	if expr == nil {
+		http.Error(w, "Internal error", http.StatusInternalServerError)
+		return
 	}
 
 	expr.Status = StatusInQueue
