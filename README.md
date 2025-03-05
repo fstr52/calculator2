@@ -63,14 +63,14 @@ curl --location "localhost:8080/api/v1/expressions"
 {
     "expressions": [
         {
-            "id": <идентификатор выражения>,
-            "status": <статус вычисления выражения>,
-            "result": <результат выражения>
+            "id": 1,
+            "status": done,
+            "result": 5
         },
         {
-            "id": <идентификатор выражения>,
-            "status": <статус вычисления выражения>,
-            "result": <результат выражения>
+            "id": 2,
+            "status": in_queue,
+            "result": 0
         }
     ]
 }
@@ -90,9 +90,9 @@ curl --location "localhost:8080/api/v1/expressions/:id"
 {
     "expression":
         {
-            "id": <идентификатор выражения>,
-            "status": <статус вычисления выражения>,
-            "result": <результат выражения>
+            "id": 1,
+            "status": done,
+            "result": 5
         }
 }
 ```
