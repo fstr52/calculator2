@@ -127,8 +127,8 @@ HTTP статус:
     curl --location "localhost:8080/api/v1/calculate" --header "Content-Type: application/json" --data "{\"expression\": \"(2+3\"}"
     ```
     Ответ:
-    ```json
-    {"error":"Expression is not valid"}
+    ```
+    Invalid expression
     ```
     HTTP статус:
     ```
@@ -140,8 +140,8 @@ HTTP статус:
     curl --location "localhost:8080/api/v1/calculate" --header "Content-Type: text/plain" --data "{\"expression\": \"2+3\"}"
     ```
     Ответ:
-    ```json
-    {"error":"Wrong content-type, expected JSON"}
+    ```
+    Wrong content-type, expected JSON
     ```
     HTTP статус:
     ```
@@ -153,8 +153,8 @@ HTTP статус:
     curl --location --request GET  "localhost:8080/api/v1/calculate"  --header "Content-Type: application/json"  --data "{\"expression\": \"2+3\"}"
     ```
     Ответ:
-    ```json
-    {"error":"Wrong method, expected POST"}
+    ```
+    Wrong method, expected POST
     ```
     HTTP статус:
     ```
@@ -162,8 +162,8 @@ HTTP статус:
     ```
 4. **Непредвиденная ошибка**<br>
     Ответ:
-    ```json
-    {"error":"Internal server error"}
+    ```
+    Internal server error
     ```
     HTTP статус:
     ```
