@@ -36,8 +36,8 @@ func toPostfix(expression string) ([]string, error) {
 
 	for _, n := range expression {
 		if unicode.IsDigit(n) || (curNum.Len() > 0 && (n == '.' || n == ',')) {
-			if n == '.' {
-				n = ','
+			if n == ',' {
+				n = '.'
 			}
 
 			curNum.WriteRune(n)
