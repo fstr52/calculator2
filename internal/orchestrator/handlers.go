@@ -510,7 +510,7 @@ func (o *Orchestrator) GetExpressionByIDHandler(w http.ResponseWriter, r *http.R
 	if !ok {
 		logger.Error("Failed to extract ID from URL",
 			"url", url)
-		http.Error(w, "Failed to cut ID", 500)
+		http.Error(w, "Failed to cut ID", http.StatusNotFound)
 		return
 	}
 
